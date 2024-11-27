@@ -16,7 +16,10 @@ class PdfController extends Controller
                     ->setNpmBinary('/usr/local/bin/npm')  // Env ah file path set tur (where npm)
                     ->setChromePath("/usr/bin/chromium-browser")
                     ->newHeadless()
-                    ->noSandbox();
+                    ->noSandbox()
+                    ->setEnvironmentOptions([
+                        'CHROME_CONFIG_HOME' => storage_path('app/chrome/.config')
+                    ]);
             })
             ->save('sample.pdf');
     }
