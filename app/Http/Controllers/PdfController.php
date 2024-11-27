@@ -10,6 +10,8 @@ class PdfController extends Controller
 {
     public function index()
     {
+
+        $filePath = storage_path('app/public/detailment-orders/') . 'sample.pdf';
         return Pdf::view('pdf')
             ->withBrowsershot(function (Browsershot $browsershot) {
                 $browsershot->setNodeBinary('/usr/local/bin/node') // Env ah file path set tur (where node) 
@@ -21,6 +23,6 @@ class PdfController extends Controller
                         'CHROME_CONFIG_HOME' => storage_path('app/chrome/.config')
                     ]);
             })
-            ->save('sample.pdf');
+            ->save($filePath);
     }
 }
