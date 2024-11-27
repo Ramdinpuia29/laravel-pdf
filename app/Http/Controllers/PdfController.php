@@ -15,7 +15,8 @@ class PdfController extends Controller
                 $browsershot->setNodeBinary('/usr/local/bin/node') // Env ah file path set tur (where node) 
                     ->setNpmBinary('/usr/local/bin/npm')  // Env ah file path set tur (where npm)
                     ->setChromePath("/usr/bin/chromium-browser")
-                    ->newHeadless();
+                    ->newHeadless()
+                    ->noSandbox();
             })
             ->save('sample.pdf');
     }
