@@ -12,6 +12,11 @@ class PdfController extends Controller
     {
 
         $filePath = storage_path('app/public/detailment-orders/') . 'sample.pdf';
+
+        if (! file_exists(storage_path('app/public/detailment-orders'))) {
+            mkdir(storage_path('app/public/detailment-orders'), 0777, true);
+        }
+
         return Pdf::view('pdf')
             ->withBrowsershot(function (Browsershot $browsershot) {
                 $browsershot->setNodeBinary('/usr/local/bin/node') // Env ah file path set tur (where node) 
